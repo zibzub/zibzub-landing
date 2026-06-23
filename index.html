@@ -18,11 +18,14 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <style>
+      html,
       body {
-        min-height: 100vh;
+        height: 100%;
+      }
+
+      body {
         margin: 0;
-        display: grid;
-        place-items: center;
+        overflow: hidden;
         background: #050507;
         color: #eee;
         font-family: system-ui, sans-serif;
@@ -30,35 +33,65 @@
 
       main {
         display: grid;
-        gap: 30px;
-        text-align: center;
+        grid-template-rows: 1fr 1fr;
+        width: 100%;
+        height: 100vh;
+        height: 100dvh;
       }
 
       a {
-        color: hotpink;
-        font-size: 22px;
-        text-decoration: none;
+        display: grid;
+        place-items: center;
+        min-height: 0;
+        overflow: hidden;
       }
 
-      a:hover,
       a:focus-visible {
-        text-decoration: underline;
+        outline: 4px solid hotpink;
+        outline-offset: -4px;
       }
-      
-      main img {
-        max-width: min(640px, 90vw);
+
+      img {
         height: auto;
         display: block;
-        margin: 0 auto;
+      }
+
+      .catmoon {
+        background-color: #050507;
+        background-image: url("/img/bgstarssmall.png"), url("/img/bgstarslarge.png");
+        background-position: center center, center center;
+        background-repeat: repeat, repeat;
+      }
+
+      .catmoon img {
+        width: min(44vh, 42vw, 420px);
+      }
+
+      .squish {
+        background: #39383f;
+      }
+
+      .squish img {
+        width: min(82vw, 82vh, 760px);
+      }
+
+      @media (max-width: 700px) {
+        .catmoon img {
+          width: min(38vh, 76vw);
+        }
+
+        .squish img {
+          width: min(90vw, 42vh);
+        }
       }
     </style>
   </head>
   <body>
     <main>
-      <a href="https://catmoon.zibzub.art/">
-        <img src="/img/preview-catmoon.png" alt="CatMoon">
+      <a class="catmoon" href="https://catmoon.zibzub.art/" aria-label="CatMoon">
+        <img src="/img/catmoon.png" alt="CatMoon">
       </a>
-      <a href="https://squish.zibzub.art/">
+      <a class="squish" href="https://squish.zibzub.art/" aria-label="Squish">
         <img src="/img/preview-squish.png" alt="Squish">
       </a>
     </main>
